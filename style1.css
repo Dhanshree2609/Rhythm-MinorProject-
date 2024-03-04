@@ -25,7 +25,7 @@ header i{
     font-size: 40px;
     color: black;
 }
-header .circle2{
+/* header .circle2{
     height: 140px;
     width: 140px;
     border: -webkit-radial-gradient(circle, hsla(0, 100%, 50%, 1) 40%, hsla(0, 100%, 27%, 1) 100%);
@@ -34,12 +34,12 @@ header .circle2{
     justify-content: center;
     align-items: center;
     position:fixed;
-    top: 40%;
+    top: 41.5%;
     left: 45%;
     background: -webkit-radial-gradient(circle, hsla(0, 100%, 50%, 1) 40%, hsla(0, 100%, 27%, 1) 100%);;
-}
+}*/
 
-header .circle1:hover{
+header .circle1{
     height: 180px;
     width: 180px;
     border-radius: 50%;
@@ -47,9 +47,30 @@ header .circle1:hover{
     justify-content: center;
     align-items: center;
     position:fixed;
-    top: 35%;
-    left: 42%;
-    background-color: gray;
+    top: 39.5%;
+    left: 44%;
+    background-color: rgb(179, 177, 177);
     border: gray;
+} 
+
+header .circle1 .circle2{
+    height: 140px;
+    width: 140px;
+    background-color:gray;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+header .circle1 .circle2 .circle3{
+    height: 100px;
+    width: 100px;
+    background-color:rgb(237, 9, 9);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
