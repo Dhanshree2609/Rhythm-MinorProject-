@@ -1,5 +1,5 @@
 const music = new Audio('songs/Attention.mp3');
-// music.play();
+music.play();
 
 const songs =[
     {
@@ -10,4 +10,4 @@ const songs =[
         </ul>`,
         poster : "images/song (1).png"
     }
-]
+]frrfgr
