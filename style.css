@@ -709,10 +709,81 @@ header .masterplay img{
     overflow: hidden;
     display: flex;
     align-items: center;
+
+}
+.masterplay .icon #download {
+    font-size: 20px ;
+    margin-left: 10px;
+
+}
+
+.masterplay .icon .bi:nth-child(3){
+    border: 1px solid rgb(105,105,105,.1);
+    border-radius: 50%;
+    padding: 1px 5px 0px 7px;
+    margin: 0px 5px;
+
+}
+.masterplay span{
+    color: white;
+    width: 32px;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.masterplay #currentstart {
+    margin: 0px 0px 0px 20px;
+
+}
+.masterplay .bar {
+    position: relative;
+    width: 43%;
+    height: 2px;
+    background: rgb(105,105,170,.1 );
+    margin: 0px 15px 0px 10px;
+
+}
+.masterplay .bar .bar2{
+    position: absolute;
+    background: #36e3ec;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    transition: 1s linear;
+}
+header .master_play .bar .dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color:#36e2ec;
+    border-radius: 50px;
+    left: 0%;
+    top: -1.5px;
+    transition: 1s;
+}
+
+header .master_play .bar .dot::before {
+    content:'';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #36e2ec;
+    border-radius: 50%;
+    left: -6px;
+    top: -6.5px;
+    box-shadow: inset 0px 0px 3px #36e2ec;
     
 }
 
-
+header .master_play .bar input {
+    position: absolute;
+    width: 100%;
+    top: -7px;
+    left: 0;
+    cursor: pointer;
+    z-index: 99999999999999999999999999999999;
+    opacity: 0;
+}  
 
 
 
