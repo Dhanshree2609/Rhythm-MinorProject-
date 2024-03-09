@@ -68,7 +68,7 @@ header .word i{
 /* box2 */
 header .album{
     width:95%;
-    height: 460px;   
+    height: 480px;   
     margin: 10px;
     border-radius: 7px;
     background-color: rgb(20, 20, 23);
@@ -161,9 +161,8 @@ header .album .album-list .circleitem:hover{
 /* box3 */
 header .song-side{
     width:69%;
-    border: 1px solid black;
-    height: 589px;
-    margin: 10px 10px 10px 0px;
+    height: 610px;
+    margin: 10px 10px 5px 0px;
     border-radius: 7px;
     background-color:  rgb(20, 20, 23);
     color: white;
@@ -303,58 +302,7 @@ header .song-side .bottom .box p{
     color: rgb(167, 165, 165);
 }
 /* ---------------------------------------------------------------------------------------------------------------------------- */
-/* box4 */
-.master-play{
-    /* border: 2px solid white; */
-    height: 11%;
-    width: 100%;
-    color: white;
-    background-color:white;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    margin-top: 0px;
-}
 
-header .master-play .item{
-    display: flex;
-    align-items: center;   
-}
-
-header .master-play .item img{
-    height: 55px;
-    margin: 5px 5px 5px 20px;
-    border-radius: 5px;
-}
-
-header .master-play .item i{
-    font-size: 17px;
-    margin-left: 25px;
-}
-
-header .master-play .icon i{
-    color: white;
-    font-size: 30px;
-}
-
-header .master-play span{
-    color: #fff;
-    width: 32px;
-    font-size: 12px;
-    font-weight: 400;
-}
-
-header .master-play #currentstart{
-    margin: 0px 0px 0px 20px;
-}
-
-header .master-play .bar{
-    position: relative;
-    width: 43%;
-    height: 2px;
-    background: rgb(105,105,170,.1);
-    margin : 0px 15px 0px 10px;
-}
 /* ---------------------------------------------------------------------------------------------------------------------- */
 /* Search.html css styling */
 header .song-side .search{
@@ -645,11 +593,124 @@ button:hover {
     background-color: #45a049;
 }
 
+/* ------------------------------------------------------------------------------------------------ */
+
+/* master play */
+.masterplay{
+    /* border: 2px solid white; */
+    height: 11%;
+    width: 100%;
+    color: white;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    margin-top: 0px;
+}
+
+.masterplay .wave{
+    width: 30px;
+    height: 30px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: flex-end;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+header .masterplay .wave .wave1{
+    width: 3px;
+    height: 20px;
+    background: #36e2ec;
+    margin-right: 3px;
+    border-radius: 10px 10px 0px 0px;  
+    animation: wave .5s linear infinite;  
+}
+header .masterplay .wave .wave1 :nth-child(2){
+    height: 16px;
+    margin-right: 3.5px;
+    animation-delay: .4s;
+}
+
+header .masterplay .wave .wave1 :nth-child(3){
+    height: 12px;
+    animation-delay: .8s;
+}
+
+/* javascript */
 
 
+header .masterplay active1 .wave1 {
+    animation: wave .5s linear infinite;
+}
 
+header .masterplay active .wave1 :nth-child(2){
+    
+    animation-delay: .7s linear infinite;
+}
 
+header .masterplay .wave .wave1 :nth-child(3){
+    
+    animation-delay: .8s;
+}
+@keyframes wave{
+    0%{
+        height: 20px;
+    }
+    50%{
+        height: 10px;
+    }
+    100%{
+        height: 15px;
+    }
+}
 
+header .masterplay img{
+    width: 35px;
+    height: 35px;
+}
+
+.masterplay h5{
+    width: 130px;
+    /* border: 1px solid white; */
+    margin-left: 15px;
+    color: white;
+    line-height: 17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+
+}
+.masterplay h5 .subtitle{
+    font-size: 11px;
+    color: #4c5262;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.masterplay .icon{
+    font-size: 20px;
+    color: white;
+    margin: 0px 20px 0px 40px;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+.masterplay .icon .bi{
+    cursor: pointer;
+    outline: none;
+}
+.masterplay .icon .shuffle{
+    font-size: 17px;
+    margin-right: 10px;
+    width: 17.5px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    
+}
 
 
 
