@@ -302,6 +302,10 @@ header .song-side .bottom .box p{
     width: 100%;
     color: white;
     background-color:black;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    margin:0px 20px 0px 40px ;
 }
 
 header .master-play .item{
@@ -318,6 +322,30 @@ header .master-play .item img{
 header .master-play .item i{
     font-size: 17px;
     margin-left: 25px;
+}
+
+header .master-play .icon i{
+    color: white;
+    font-size: 30px;
+}
+
+header .master-play span{
+    color: #fff;
+    width: 32px;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+header .master-play #currentstart{
+    margin: 0px 0px 0px 20px;
+}
+
+header .master-play .bar{
+    position: relative;
+    width: 43%;
+    height: 2px;
+    background: rgb(105,105,170,.1);
+    margin : 0px 15px 0px 10px;
 }
 
 /* Search.html css styling */
