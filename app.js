@@ -10,4 +10,4 @@ const songs =[
         </ul>`,
         poster : "images/song (1).png"
     }
-]anushka savner
+]
