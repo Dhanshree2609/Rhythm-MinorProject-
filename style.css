@@ -605,6 +605,7 @@ button:hover {
     display: flex;
     align-items: center;
     margin-top: 0px;
+    justify-content: center;
 }
 
 .masterplay .wave{
@@ -665,8 +666,9 @@ header .masterplay .wave .wave1 :nth-child(3){
 }
 
 header .masterplay img{
-    width: 35px;
-    height: 35px;
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
 }
 
 .masterplay h5{
@@ -678,11 +680,11 @@ header .masterplay img{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 13px;
+    font-size: 15px;
 
 }
 .masterplay h5 .subtitle{
-    font-size: 11px;
+    font-size: 13px;
     color: #4c5262;
     width: 100%;
     overflow: hidden;
@@ -691,7 +693,7 @@ header .masterplay img{
 }
 
 .masterplay .icon{
-    font-size: 20px;
+    font-size: 30px;
     color: white;
     margin: 0px 20px 0px 40px;
     outline: none;
@@ -703,18 +705,17 @@ header .masterplay img{
     outline: none;
 }
 .masterplay .icon .shuffle{
-    font-size: 17px;
+    font-size: 20px;
     margin-right: 10px;
-    width: 17.5px;
+    width: 20px;
     overflow: hidden;
     display: flex;
     align-items: center;
 
 }
 .masterplay .icon #download {
-    font-size: 20px ;
+    font-size: 25px ;
     margin-left: 10px;
-
 }
 
 .masterplay .icon .bi:nth-child(3){
@@ -751,7 +752,8 @@ header .masterplay img{
     top: 0;
     transition: 1s linear;
 }
-header .master_play .bar .dot {
+
+header .masterplay .bar .dot {
     position: absolute;
     width: 5px;
     height: 5px;
@@ -762,7 +764,7 @@ header .master_play .bar .dot {
     transition: 1s;
 }
 
-header .master_play .bar .dot::before {
+header .masterplay .bar .dot::before {
     content:'';
     position: absolute;
     width: 15px;
@@ -775,7 +777,7 @@ header .master_play .bar .dot::before {
     
 }
 
-header .master_play .bar input {
+header .masterplay .bar input {
     position: absolute;
     width: 100%;
     top: -7px;
@@ -785,8 +787,62 @@ header .master_play .bar input {
     opacity: 0;
 }  
 
+header .masterplay .vol{
+    position: relative;
+    width: 100px;
+    height: 2px;
+    background: rgb(105,105,170,.1);
+    margin-left: 50px;
+}
 
+header .masterplay .vol .bi{
+    position: absolute;
+    color: #fff;
+    font-size: 30px;
+    top: -15px;
+    left: -40px;
+}
 
+header .masterplay .vol input{
+    position: absolute;
+    width: 100%;
+    top: -6px;
+    left: 0px;
+    cursor: pointer;
+    z-index: 999999999999999999999999999;
+    opacity: 0;
+}
 
+header .masterplay .vol .vol_bar{
+    position: absolute;
+    background: #36e2ec;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    transition: 1s linear;
+}
+
+header .masterplay .vol .dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color:#36e2ec;
+    border-radius: 50px;
+    left: 0%;
+    top: -1.5px;
+    transition: 1s;
+}
+
+header .masterplay .vol .dot::before{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border:1px solid #36e2ec;
+    border-radius: 50%;
+    left: -7px;
+    top: -6.5px;
+    box-shadow: inset 0px 0px 3px #36e2ec;
+}
 
 
