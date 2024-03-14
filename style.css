@@ -265,7 +265,7 @@ header .song-side .bottom h3{
 
 header .song-side .bottom .line{
     display: flex;
-    justify-content: space-between;
+    justify-content:space-around;
     align-items: center;
     margin-right: 10px;
 }
