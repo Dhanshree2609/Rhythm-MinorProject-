@@ -1,0 +1,14 @@
+{
+    "singers": [
+        { "name": "KK" }
+    ],
+    "song": "Dil Ibadat",
+    "lyrics": "agar rakha ho to",
+    "genre": "romantic",
+    "year": "2009",
+    "album": "Tum Mile",
+    "duration": "5:30",
+    "language": "Hindi",
+    "country": "India",
+    "singer_id": "1"
+}

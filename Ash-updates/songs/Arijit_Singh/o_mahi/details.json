@@ -1,0 +1,16 @@
+{
+    "singers": [
+        { "name": "Arijit Singh" },
+        { "name": "Pritam" },
+        { "name": "Irshad Kamil" }
+    ],
+    "song": "O Mahi",
+    "lyrics": "agar rakha ho to",
+    "genre": "romantic",
+    "year": "2024",
+    "album": "Dunkey",
+    "duration": "3:42",
+    "language": "Hindi",
+    "country": "India",
+    "singer_id": "1"
+}

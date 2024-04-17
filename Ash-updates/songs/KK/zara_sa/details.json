@@ -1,0 +1,14 @@
+{
+    "singers": [
+        { "name": "KK" }
+    ],
+    "song": "Zara Sa",
+    "lyrics": "agar rakha ho to",
+    "genre": "romantic",
+    "year": "2013",
+    "album": "Jannat",
+    "duration": "4:20",
+    "language": "Hindi",
+    "country": "India",
+    "singer_id": "1"
+}
