@@ -1,0 +1,14 @@
+{
+    "singers": [
+        { "name": "Kishore Kumar" }
+    ],
+    "song": "Tere Jaisa Yaar Kahan",
+    "lyrics": "agar rakha ho to",
+    "genre": "romantic",
+    "year": "1981",
+    "album": "Yaarana",
+    "duration": "4:13",
+    "language": "Hindi",
+    "country": "India",
+    "singer_id": "1"
+}

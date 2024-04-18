@@ -1,0 +1,17 @@
+{
+    "singers": [
+        { "name": "Kishore Kumar" },
+        { "name": "Lata Mangeshkar" },
+        { "name": "Mohammed Rafi" },
+        { "name": "Asha Bhosle" }
+    ],
+    "song": "Kehdoon Tumhein",
+    "lyrics": "agar rakha ho to",
+    "genre": "romantic",
+    "year": "1975",
+    "album": "Deewaar",
+    "duration": "4:30",
+    "language": "Hindi",
+    "country": "India",
+    "singer_id": "1"
+}

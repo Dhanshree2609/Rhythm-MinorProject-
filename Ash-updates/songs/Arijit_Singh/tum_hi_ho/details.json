@@ -1,0 +1,15 @@
+{
+    "singers": [
+        { "name": "Arijit Singh" },
+        { "name": "Shreya Ghoshal" }
+    ],
+    "song": " Tum hi ho",
+    "lyrics": "agar rakha ho to",
+    "genre": "romantic",
+    "year": "2013",
+    "album": "Aashiqui 2",
+    "duration": "4:24",
+    "language": "Hindi",
+    "country": "India",
+    "singer_id": "1"
+}

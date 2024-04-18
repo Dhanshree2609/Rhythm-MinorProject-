@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="singers"></ul>
+    <img id="logo" width="200" src="" alt="Singer thumbnail" />
+    <div id="songs"></div>
+    <div id="songDetails">
+      <img id="thumbnail" width="200" src="" alt="Song thumbnail" />
+      <p id="details"></p>
+      <audio controls id="player">
+        <source id="audioSource" src="" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <script>
+      const singersElement = document.getElementById("singers");
+      const singerLogo = document.getElementById("logo");
+      const songsElement = document.getElementById("songs");
+      const songDetailsElement = document.getElementById("songDetails");
+      const thumbnailElement = document.getElementById("thumbnail");
+      const detailsElement = document.getElementById("details");
+      const playerElement = document.getElementById("player");
+      const audioSourceElement = document.getElementById("audioSource");
+
+      songDetailsElement.style.display = "none";
+      singerLogo.style.display = "none";
+
+      fetch("/singers")
+        .then((response) => response.json())
+        .then((singers) => {
+          singers.forEach((singer) => {
+            const li = document.createElement("li");
+            li.textContent = singer;
+            li.addEventListener("click", () => {
+              songsElement.innerHTML = "";
+              songDetailsElement.style.display = "none";
+              fetch(`/songs/${singer}`)
+                .then((response) => response.json())
+                .then(({ songs, info }) => {
+                  singerLogo.style.display = "block";
+                  singerLogo.src = `${info.image}`;
+                  songs
+                    .filter((song) => song !== "info.json")
+                    .forEach((song) => {
+                      const songLi = document.createElement("li");
+                      songLi.textContent = song;
+                      songLi.addEventListener("click", () => {
+                        fetch(`/song/${singer}/${song}`)
+                          .then((response) => response.json())
+                          .then((details) => {
+                            thumbnailElement.src = `./songs/${singer}/${song}/thumbnail.png`;
+                            detailsElement.textContent =
+                              JSON.stringify(details);
+                            audioSourceElement.src = `./songs/${singer}/${song}/song.mp3`;
+                            playerElement.load();
+                            songDetailsElement.style.display = "block";
+                          });
+                      });
+                      songsElement.appendChild(songLi);
+                    });
+                });
+            });
+            singersElement.appendChild(li);
+          });
+        });
+    </script>
+  </body>
+</html>
