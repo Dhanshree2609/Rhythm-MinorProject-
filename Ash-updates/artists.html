@@ -41,7 +41,10 @@
                   singerLogo.style.display = "block";
                   singerLogo.src = `${info.image}`;
                   songs
-                    .filter((song) => song !== "info.json")
+                    .filter(
+                      (song) =>
+                        song !== "info.json" && song !== `${singer}.html`
+                    )
                     .forEach((song) => {
                       const songLi = document.createElement("li");
                       songLi.textContent = song;

@@ -60,7 +60,9 @@ app.get("/allsongs", (req, res) => {
               if (err) {
                 reject(err);
               } else {
-                songs = songs.filter((song) => song !== "info.json");
+                songs = songs.filter(
+                  (song) => song !== "info.json" && song !== `${singer}.html`
+                );
                 Promise.all(
                   songs.map((song) => {
                     return new Promise((resolve, reject) => {
@@ -102,8 +104,40 @@ app.get("/allsongs", (req, res) => {
   });
 });
 
-app.get("/artist", (req, res) => {
-  res.sendFile(path.join(__dirname, "artist.html"));
+app.get("/artists", (req, res) => {
+  res.sendFile(path.join(__dirname, "artists.html"));
+});
+
+app.get("/search", (req, res) => {
+  res.sendFile(path.join(__dirname, "search.html"));
+});
+
+// Manually adding a route for each singer is not a good idea
+// app.get("/Arijit_Singh", (req, res) => {
+//   res.sendFile(path.join(__dirname, "Arijit_Singh.html"));
+// });
+
+// how about we create a custom pages router,
+// so that we can create any number of pages, without writing a new route for each page
+
+app.get("/:singer", (req, res) => {
+  const singerPath = path.join(
+    __dirname,
+    "songs",
+    req.params.singer,
+    `${req.params.singer}.html`
+  );
+  fs.readFile(singerPath, "utf8", (err, data) => {
+    if (err) {
+      if (err.code === "ENOENT") {
+        res.sendFile(path.join(__dirname, "assets", "errors", "404.png"));
+      } else {
+        res.status(500).send(err);
+      }
+    } else {
+      res.send(data);
+    }
+  });
 });
 
 app.listen(3000, () => {

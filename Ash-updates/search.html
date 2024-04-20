@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div>
+      <label for="singerName">Enter Singer Name:</label>
+      <input type="text" id="singerName" />
+      <button onclick="showSinger()">Show Singer</button>
+    </div>
+    <ul id="singers"></ul>
+    <img id="logo" width="200" src="" alt="Singer thumbnail" />
+    <div id="songs"></div>
+    <div id="songDetails">
+      <img id="thumbnail" width="200" src="" alt="Song thumbnail" />
+      <p id="details"></p>
+      <audio controls id="player">
+        <source id="audioSource" src="" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <script>
+      const singerNameInput = document.getElementById("singerName");
+      const singersElement = document.getElementById("singers");
+      const singerLogo = document.getElementById("logo");
+      const songsElement = document.getElementById("songs");
+      const songDetailsElement = document.getElementById("songDetails");
+      const thumbnailElement = document.getElementById("thumbnail");
+      const detailsElement = document.getElementById("details");
+      const playerElement = document.getElementById("player");
+      const audioSourceElement = document.getElementById("audioSource");
+
+      songDetailsElement.style.display = "none";
+      singerLogo.style.display = "none";
+
+      function showSinger() {
+        const singerName = singerNameInput.value.split(" ").join("_");
+        if (singerName.trim() === "") {
+          alert("Please enter a singer name.");
+          return;
+        }
+
+        fetch(`/songs/${singerName}`)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Singer not found");
+            }
+            return response.json();
+          })
+          .then(({ songs, info }) => {
+            singerLogo.style.display = "block";
+            singerLogo.src = `${info.image}`;
+            songsElement.innerHTML = "";
+            songs
+              .filter((song) => song !== "info.json")
+              .forEach((song) => {
+                const songLi = document.createElement("li");
+                songLi.textContent = song;
+                songLi.addEventListener("click", () => {
+                  fetch(`/song/${singerName}/${song}`)
+                    .then((response) => response.json())
+                    .then((details) => {
+                      thumbnailElement.src = `./songs/${singerName}/${song}/thumbnail.png`;
+                      detailsElement.textContent = JSON.stringify(details);
+                      audioSourceElement.src = `./songs/${singerName}/${song}/song.mp3`;
+                      playerElement.load();
+                      songDetailsElement.style.display = "block";
+                    });
+                });
+                songsElement.appendChild(songLi);
+              });
+          })
+          .catch((error) => {
+            songsElement.innerHTML = "Singer not found";
+            console.error("Error fetching singer songs:", error);
+          });
+      }
+
+      singerNameInput.addEventListener("keyup", function (event) {
+        if (event.key === "Enter") {
+          showSinger();
+        }
+      });
+    </script>
+  </body>
+</html>
