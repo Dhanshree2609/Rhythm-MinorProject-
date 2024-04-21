@@ -1,0 +1,14 @@
+{
+    "singers": [
+        { "name": "Anne_Marie" }
+    ],
+    "song": "Who_I_Am",
+    "lyrics": "Who I am",
+    "genre": "romantic",
+    "year": "2009",
+    "album": "Midnights",
+    "duration": "2:32",
+    "language": "English",
+    "country": "America",
+    "singer_id": "1"
+}

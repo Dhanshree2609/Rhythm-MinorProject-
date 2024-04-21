@@ -1,0 +1,14 @@
+{
+    "singers": [
+        { "name": "Anne_Marie" }
+    ],
+    "song": "Our_Song",
+    "lyrics": "Nice to meet you",
+    "genre": "romantic",
+    "year": "2022",
+    "album": "Anne Marie",
+    "duration": "2:43",
+    "language": "English",
+    "country": "America",
+    "singer_id": "1"
+}

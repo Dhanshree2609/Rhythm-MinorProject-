@@ -1,0 +1,14 @@
+{
+    "singers": [
+        { "name": "Taylor_Swift" }
+    ],
+    "song": "Blank_Space",
+    "lyrics": "Nice to meet you",
+    "genre": "romantic",
+    "year": "2022",
+    "album": "1989(Taylor's Version)",
+    "duration": "4:32",
+    "language": "English",
+    "country": "America",
+    "singer_id": "1"
+}
