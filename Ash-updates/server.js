@@ -1,7 +1,12 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
+const bodyParser=require('body-parser');
+const { type } = require("os");
 const app = express();
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(path.join(__dirname)));
 
@@ -140,6 +145,55 @@ app.get("/:singer", (req, res) => {
   });
 });
 
+
+app.get("/registration", (req, res) => {
+  res.sendFile(path.join(__dirname, "registration.html"));
+});
+
+mongoose.connect('mongodb://localhost:27017',{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(()=>{
+  console.log('mongo is connnected');
+})
+
+const Schema = mongoose.Schema;
+
+const dataschema = new Schema({
+  name:{
+    type:String,
+    required:[true,"Please enter your Name"],
+    maxLength: [30,"Name cannot exceed 30 characters"],
+    minLength:[4,"Name should have more than 4 characters"]
+  },
+  email:{
+    type: String,
+    required: [true,"Please enter your Email"],
+    unique: true,
+  },
+  password:{
+    type: String,
+    required: [true,"Please enter your Password"],
+    minLength: [8,"Name should have more than 8 characters"],
+    select: false,
+  },
+});
+
+const Data=mongoose.model('Data',dataschema);
+
+app.post('/submit',(req,res)=>{
+   const {name, email, password}=req.body;
+   const newData = newData({
+     name,
+     email,
+     password,
+   });
+   newData.save();
+
+   res.redirect('/index.html');
+});
+
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
+
