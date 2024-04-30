@@ -10,4 +10,4 @@ const songs =[
         </ul>`,
         poster : "images/Taylorswift1 (3).png"
     }
-]anushka savner
+]
