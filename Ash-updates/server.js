@@ -1,15 +1,36 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
-const bodyParser=require('body-parser');
+const bodyParser = require("body-parser");
 const { type } = require("os");
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
-
+// Middlewares-
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname)));
 
+//importing database
+const userModel = require("./Models");
+
+// Page Serving api's-
+app.get("/artists", (req, res) => {
+  res.sendFile(path.join(__dirname, "artists.html"));
+});
+
+app.get("/search", (req, res) => {
+  res.sendFile(path.join(__dirname, "search.html"));
+});
+
+app.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "register.html"));
+});
+
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "login.html"));
+});
+
+// Content Serving api's Start--------------------------------------------
+// 1. serves list of singers
 app.get("/singers", (req, res) => {
   fs.readdir("./songs", (err, singers) => {
     if (err) {
@@ -20,6 +41,7 @@ app.get("/singers", (req, res) => {
   });
 });
 
+// 2. serves list of songs for a singer
 app.get("/songs/:singer", (req, res) => {
   const singerPath = `./songs/${req.params.singer}`;
   fs.readdir(singerPath, (err, songs) => {
@@ -38,6 +60,7 @@ app.get("/songs/:singer", (req, res) => {
   });
 });
 
+// 3. serves the actual song and details of song
 app.get("/song/:singer/:song", (req, res) => {
   fs.readFile(
     `./songs/${req.params.singer}/${req.params.song}/details.json`,
@@ -52,6 +75,7 @@ app.get("/song/:singer/:song", (req, res) => {
   );
 });
 
+// 4. serves all available songs
 app.get("/allsongs", (req, res) => {
   fs.readdir("./songs", (err, singers) => {
     if (err) {
@@ -109,14 +133,6 @@ app.get("/allsongs", (req, res) => {
   });
 });
 
-app.get("/artists", (req, res) => {
-  res.sendFile(path.join(__dirname, "artists.html"));
-});
-
-app.get("/search", (req, res) => {
-  res.sendFile(path.join(__dirname, "search.html"));
-});
-
 // Manually adding a route for each singer is not a good idea
 // app.get("/Arijit_Singh", (req, res) => {
 //   res.sendFile(path.join(__dirname, "Arijit_Singh.html"));
@@ -124,7 +140,9 @@ app.get("/search", (req, res) => {
 
 // how about we create a custom pages router,
 // so that we can create any number of pages, without writing a new route for each page
+// -Ashutosh7i
 
+// 5. serves the singer's html page
 app.get("/:singer", (req, res) => {
   const singerPath = path.join(
     __dirname,
@@ -144,56 +162,39 @@ app.get("/:singer", (req, res) => {
     }
   });
 });
+// Content Serving api's End--------------------------------------------
 
-
-app.get("/registration", (req, res) => {
-  res.sendFile(path.join(__dirname, "registration.html"));
+// User Authentication api's Start--------------------------------------------
+// 1. Register User
+app.post("/register", async (req, res) => {
+  const { username, email, password } = req.body;
+  try {
+    const user = await userModel.create({ username, email, password });
+    res.status(201).send(user);
+  } catch (error) {
+    res.status(400).send(error);
+  }
 });
 
-mongoose.connect('mongodb://localhost:27017',{
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(()=>{
-  console.log('mongo is connnected');
-})
-
-const Schema = mongoose.Schema;
-
-const dataschema = new Schema({
-  name:{
-    type:String,
-    required:[true,"Please enter your Name"],
-    maxLength: [30,"Name cannot exceed 30 characters"],
-    minLength:[4,"Name should have more than 4 characters"]
-  },
-  email:{
-    type: String,
-    required: [true,"Please enter your Email"],
-    unique: true,
-  },
-  password:{
-    type: String,
-    required: [true,"Please enter your Password"],
-    minLength: [8,"Name should have more than 8 characters"],
-    select: false,
-  },
+// 2. Login User
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await userModel.findOne({ email }).select("+password").exec();
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    if (password !== user.password) {
+      return res.status(401).send("Invalid Password");
+    }
+    res.status(200).send(user);
+  } catch (error) {
+    res.status;
+  }
 });
 
-const Data=mongoose.model('Data',dataschema);
-
-app.post('/submit',(req,res)=>{
-   const {name, email, password}=req.body;
-   const newData = newData({
-     name,
-     email,
-     password,
-   });
-   newData.save();
-
-   res.redirect('/index.html');
-});
+// User Authentication api's End--------------------------------------------
 
 app.listen(3000, () => {
   console.log("Server is running on http://localhost:3000");
 });
-
